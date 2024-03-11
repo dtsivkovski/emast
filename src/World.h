@@ -12,9 +12,10 @@ class World {
         // const. / destr.
         World();
         World(
-            unsigned int orgCount,
-            unsigned int xDimension,
-            unsigned int yDimension
+                unsigned int orgCount,
+                unsigned int xDimension,
+                unsigned int yDimension,
+                double mutationChance
             );
         ~World();
 
@@ -40,6 +41,7 @@ class World {
         //! TODO: void setSelection(Selection ns);
     private:
         void generateCiv();
+        double mutationChance;
         unsigned int orgCount;
         unsigned int xDimension;
         unsigned int yDimension;
