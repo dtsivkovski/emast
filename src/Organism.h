@@ -1,5 +1,5 @@
-#ifndef ORGANISM_H;
-#define ORGANISM_H;
+#ifndef ORGANISM_H
+#define ORGANISM_H
 
 #include "Genome.h"
 #include "Brain.h"

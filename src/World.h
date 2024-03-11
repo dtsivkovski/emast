@@ -1,8 +1,9 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include <iostream>;
-#include "Organism.h";
+#include "Organism.h"
+
+#include <iostream>
 using namespace std;
 
 class World {

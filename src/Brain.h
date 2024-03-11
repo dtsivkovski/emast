@@ -4,7 +4,7 @@
 #include "Genome.h"
 #include <iostream>
 
-namespace std {
+using namespace std;
 
 class Brain {
     public:
@@ -15,7 +15,5 @@ class Brain {
         Genome *genome; // stores pointer to genome
         void generateNeurons(); // generates all neurons based on the genome
 };
-
-} // namespace std
 
 #endif // BRAIN_H
