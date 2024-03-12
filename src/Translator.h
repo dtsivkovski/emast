@@ -2,7 +2,7 @@
 #define TRANSLATOR_H
 
 #include "Brain.h"
-#include "Neuron.h"
+#include "Neurons/Neuron.h"
 
 #include <iostream>
 #include <unordered_map>
@@ -17,22 +17,28 @@ class Translator {
         void translateGene(string genestr);
         int stringToWeight(string weightstr);
         unordered_map<char, string> geneMap = {
-            // movement neurons
-            {'A', "move_left"}, // char value 65
-            {'B', "move_up"},
-            {'C', "move_right"},
-            {'D', "move_down"},
-            {'E', "move_random"},
             // sensing neurons
-            {'F', "empty_right"},
-            {'G', "empty_left"},
-            {'H', "empty_up"},
-            {'I', "empty_down"},
-            // sensing for boundaries
-            {'J', "at_boundary_right"},
-            {'K', "at_boundary_left"},
-            {'L', "at_boundary_up"},
-            {'M', "at_boundary_down"}
+            {'A', "empty_right"},
+            {'B', "empty_left"},
+            {'C', "empty_up"},
+            {'D', "empty_down"},
+            // distance from wall neurons
+            {'E', "distance_east"},
+            {'F', "distance_west"},
+            {'G', "distance_north"},
+            {'H', "distance_south"},
+            // age neuron
+            {'I', "age"},
+            // last movement neuron
+            {'J', "last_movement_X"},
+            {'K', "last_movement_Y"},
+            // location neurons
+            {'L', "location_X"},
+            {'M', "location_Y"},
+            // random neuron
+            {'N', "random"},
+            // oscillating neuron
+            {'O', "oscillating"}
         };
 };
 
