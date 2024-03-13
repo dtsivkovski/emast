@@ -2,11 +2,20 @@
 #define TRANSLATOR_H
 
 #include "Brain.h"
-#include "Neurons/Neuron.h"
+#include "Neurons/SensoryNeuron.h"
+#include "Neurons/MotorNeuron.h"
+#include "Neurons/NeuronLink.h"
+#include "Neurons/EmptyDirectionNeuron.h"
 
 #include <iostream>
 #include <unordered_map>
 using namespace std;
+
+enum class NEURON_TYPE {
+    EMPTYDIR,
+    DISTANCE,
+    AGE
+};
 
 class Translator {
 
@@ -16,29 +25,45 @@ class Translator {
     private:
         void translateGene(string genestr);
         int stringToWeight(string weightstr);
-        unordered_map<char, string> geneMap = {
+        unordered_map<char, NEURON_TYPE, char> sensingNeuronsTypes = {
             // sensing neurons
-            {'A', "empty_right"},
-            {'B', "empty_left"},
-            {'C', "empty_up"},
-            {'D', "empty_down"},
+            {'A', NEURON_TYPE::EMPTYDIR},
+            {'B', NEURON_TYPE::EMPTYDIR},
+            {'C', NEURON_TYPE::EMPTYDIR},
+            {'D', NEURON_TYPE::EMPTYDIR},
             // distance from wall neurons
-            {'E', "distance_east"},
-            {'F', "distance_west"},
-            {'G', "distance_north"},
-            {'H', "distance_south"},
+            {'E', NEURON_TYPE::DISTANCE},
+            {'F', NEURON_TYPE::DISTANCE},
+            {'G', NEURON_TYPE::DISTANCE},
+            {'H', NEURON_TYPE::DISTANCE},
+            // {'E', "distance_east"},
+            // {'F', "distance_west"},
+            // {'G', "distance_north"},
+            // {'H', "distance_south"},
             // age neuron
-            {'I', "age"},
+            {'I', NEURON_TYPE::AGE}
+            // {'I', "age"},
             // last movement neuron
-            {'J', "last_movement_X"},
-            {'K', "last_movement_Y"},
+            // {'J', "last_movement_X"},
+            // {'K', "last_movement_Y"},
             // location neurons
-            {'L', "location_X"},
-            {'M', "location_Y"},
+            // {'L', "location_X"},
+            // {'M', "location_Y"},
             // random neuron
-            {'N', "random"},
+            // {'N', "random"},
             // oscillating neuron
-            {'O', "oscillating"}
+            // {'O', "oscillating"}
+        };
+        unordered_map<char, char> sensingNeuronsChars {
+            {'A', 'u'},
+            {'B', 'd'},
+            {'C', 'l'},
+            {'D', 'r'},
+            {'E', 'e'},
+            {'F', 'w'},
+            {'G', 'n'},
+            {'H', 's'},
+            {'I', 'a'},
         };
 };
 

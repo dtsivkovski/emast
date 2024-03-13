@@ -16,6 +16,10 @@ class Organism {
         ~Organism();
         Genome *genome;
         Brain *brain;
+        unsigned int coordX;
+        unsigned int coordY;
+        unsigned int age;
+        void move(unsigned int x, unsigned int y); // moves the organism to a new location
         Organism reproduce(); // creates a new organism but with slightly modified genome
 
     private:
