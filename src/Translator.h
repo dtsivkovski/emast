@@ -14,7 +14,11 @@ using namespace std;
 enum class NEURON_TYPE {
     EMPTYDIR,
     DISTANCE,
-    AGE
+    AGE,
+    LOCATION,
+    LASTMOVEMENT,
+    RANDOM,
+    OSCILLATING
 };
 
 class Translator {
@@ -41,18 +45,17 @@ class Translator {
             // {'G', "distance_north"},
             // {'H', "distance_south"},
             // age neuron
-            {'I', NEURON_TYPE::AGE}
-            // {'I', "age"},
-            // last movement neuron
-            // {'J', "last_movement_X"},
-            // {'K', "last_movement_Y"},
+            {'I', NEURON_TYPE::AGE},
             // location neurons
-            // {'L', "location_X"},
-            // {'M', "location_Y"},
+            {'J', NEURON_TYPE::LOCATION},
+            {'K', NEURON_TYPE::LOCATION},
+            // last movement neurons
+            {'L', NEURON_TYPE::LASTMOVEMENT},
+            {'M', NEURON_TYPE::LASTMOVEMENT},
             // random neuron
-            // {'N', "random"},
+            {'N', NEURON_TYPE::RANDOM},
             // oscillating neuron
-            // {'O', "oscillating"}
+            {'O', NEURON_TYPE::OSCILLATING}
         };
         unordered_map<char, char> sensingNeuronsChars {
             {'A', 'u'},
