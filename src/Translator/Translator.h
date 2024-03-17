@@ -1,14 +1,11 @@
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
 
-#include "Brain.h"
-#include "Neurons/SensoryNeuron.h"
-#include "Neurons/MotorNeuron.h"
-#include "Neurons/NeuronLink.h"
-#include "Neurons/EmptyDirectionNeuron.h"
 
 #include <iostream>
 #include <unordered_map>
+#include <exception>
+#include <string>
 using namespace std;
 
 enum class NEURON_TYPE {
@@ -24,12 +21,13 @@ enum class NEURON_TYPE {
 class Translator {
 
     public:
-        Brain translateGenome(string genome);
+        Translator();
+        ~Translator();
+        string translate(string genestr);
+        void translateGene(string genestr);
 
     private:
-        void translateGene(string genestr);
-        int stringToWeight(string weightstr);
-        unordered_map<char, NEURON_TYPE, char> sensingNeuronsTypes = {
+        unordered_map<char, NEURON_TYPE> sensingNeuronsTypes = {
             // sensing neurons
             {'A', NEURON_TYPE::EMPTYDIR},
             {'B', NEURON_TYPE::EMPTYDIR},
@@ -67,6 +65,12 @@ class Translator {
             {'G', 'n'},
             {'H', 's'},
             {'I', 'a'},
+            {'J', 'x'},
+            {'K', 'y'},
+            {'L', 'x'},
+            {'M', 'y'},
+            {'N', 'r'},
+            {'O', 'o'}
         };
 };
 

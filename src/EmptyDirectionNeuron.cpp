@@ -1,22 +1,23 @@
-#ifndef EMPTYDIRECTIONNEURON_H
-#define EMPTYDIRECTIONNEURON_H
-#include "SensoryNeuron.h"
-#include "World.h"
-#include "Organism.h"
+#include "EmptyDirectionNeuron.h"
 
-class EmptyDirectionNeuron : public SensoryNeuron {
-    public:
-        EmptyDirectionNeuron(char direction);
+EmptyDirectionNeuron::EmptyDirectionNeuron() {};
 
-        float sense() {
+EmptyDirectionNeuron::EmptyDirectionNeuron(char direction, char** worldmap, Organism *organism) {
+    this->direction = direction;
+    this->worldmap = worldmap;
+}
+
+EmptyDirectionNeuron::~EmptyDirectionNeuron() {}
+
+int EmptyDirectionNeuron::sense() {
             // get the location of the organism
             unsigned int x = organism->coordX;
             unsigned int y = organism->coordY;
             // get the world array
-            char** map = world->map;
+            char** map = worldmap; // TODO: World->map instead of map
             // get the size of the world
-            unsigned int xDim = world->getXDim();
-            unsigned int yDim = world->getYDim();
+            unsigned int xDim = 10; // TODO: unsigned int xDim = world->getXDim();
+            unsigned int yDim = 10; // TODO: unsigned int yDim = world->getYDim();
 
             switch (direction) {
                 case 'l':
@@ -27,7 +28,6 @@ class EmptyDirectionNeuron : public SensoryNeuron {
                         }
                     }
                     return 0;
-                    break;
                 case 'r':
                     // logic to determine if right is empty
                     if (x < xDim - 1) {
@@ -36,7 +36,6 @@ class EmptyDirectionNeuron : public SensoryNeuron {
                         }
                     }
                     return 0;
-                    break;
                 case 'u':
                     // logic to determine if up is empty
                     if (y < yDim - 1) {
@@ -44,7 +43,7 @@ class EmptyDirectionNeuron : public SensoryNeuron {
                             return 1; // if empty space and not at boundary
                         }
                     }
-                    break;
+                    return 0;
                 case 'd':
                     // logic to determine if down is empty
                     if (y > 0) {
@@ -53,13 +52,8 @@ class EmptyDirectionNeuron : public SensoryNeuron {
                         }
                     }
                     return 0;
-                    break;
+                default:
+                    return 0;
             }
             return 0; // default return value
         }
-
-    private:
-        char direction;
-};
-
-#endif // EMPTYDIRECTIONNEURON_H

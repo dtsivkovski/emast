@@ -2,7 +2,6 @@
 #define SENSORYNEURON_H
 
 #include "Organism.h"
-#include "World.h"
 #include <iostream>
 
 using namespace std;
@@ -10,14 +9,15 @@ using namespace std;
 class SensoryNeuron {
     public:
         SensoryNeuron();
-        SensoryNeuron(string type, Organism *neuronOwner, World *world);
+        // SensoryNeuron(string type, Organism *neuronOwner, World *world);
         ~SensoryNeuron();
         float sense(); // outputs a float value based on what it senses, unique to each type
 
     protected:
         string type;
         Organism *organism;
-        World *world;
+        char** map;
+        //TODO: World *world; // instead of char** map
 };
 
 #endif // SENSORYNEURON_H

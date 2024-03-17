@@ -1,9 +1,9 @@
 #ifndef ORGANISM_H
 #define ORGANISM_H
 
-#include "Genome.h"
-#include "Brain.h"
-#include "Translator.h"
+//! #include "Genome.h"
+//! #include "Brain.h"
+//! #include "Translator.h"
 
 #include <iostream>
 using namespace std;
@@ -12,10 +12,11 @@ class Organism {
 
     public:
         Organism();
-        Organism(Genome g, double mutationChance); // overloaded const.
+        //! Organism(Genome g, double mutationChance); // overloaded const.
         ~Organism();
-        Genome *genome;
-        Brain *brain;
+        //! Genome *genome;
+        //! Brain *brain;
+        // needs a pointer to the world to interact with it
         unsigned int coordX;
         unsigned int coordY;
         unsigned int age;
