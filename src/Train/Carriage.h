@@ -10,13 +10,13 @@ template <typename T>
 class Carriage {
     public:
         Carriage(); // defaults to size 3
-        Carriage(unsigned int size);
+        Carriage(unsigned int size, string name);
         ~Carriage();
 
         // next and previous carriages
         Carriage* next;
         Carriage* prev;
-        // data
+        string name;
 
         // adding/setting/seeing/removing data
         void add(T data);
@@ -28,6 +28,7 @@ class Carriage {
         // aux functions
         int getSize();
         void printData();
+        string getManifest();
         unsigned int numInCarriage();
         bool isEmpty();
         bool isFull();

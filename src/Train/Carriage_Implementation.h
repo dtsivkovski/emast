@@ -7,7 +7,7 @@ Carriage<T>::Carriage() {
 }
 
 template <typename T>
-Carriage<T>::Carriage(unsigned int size) {
+Carriage<T>::Carriage(unsigned int size, string name) {
     this->size = size;
     data = new T[size];
     next = nullptr;
@@ -71,6 +71,15 @@ T* Carriage<T>::getAll() {
 template <typename T>
 int Carriage<T>::getSize() {
     return size;
+}
+
+template <typename T>
+string Carriage<T>::getManifest() {
+    string manifest = "\n--- " + name + " ---\n";
+    for (int i = 0; i < inCarriage; i++) {
+        manifest += i + " : " data[i] + " ";
+    }
+    return manifest;
 }
 
 template <typename T>
