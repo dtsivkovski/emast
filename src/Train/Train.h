@@ -1,7 +1,6 @@
 #ifndef TRAIN_H
 #define TRAIN_H
 
-#include "Conductor.h"
 #include "Carriage.h"
 
 #include <iostream>
@@ -12,20 +11,25 @@ template <typename T>
 class Train {
     public:
         Train();
+        Train(string name);
         ~Train();
 
         // TODO: Add carriage management functions
-        Carriage<T> getFirst();
-        Carriage<T> getCaboose();
+        Carriage<T> seeFirst();
+        Carriage<T> seeCaboose();
         void addCarriage(unsigned int size, string name);
-        void removeFirst();
-        void removeCaboose();
+        Carriage<T> removeFirst();
+        Carriage<T> removeCaboose();
 
         // TODO: Add conductor functions
-        void filterManifest(function<bool(T)> filter);
+        //! NOT WORKING: void filterManifest(function<bool(T)> filter);
+        string getFullManifest();
+        
+        // working with carriages
+        void insertToCarriage(unsigned int index, T data);
+        void insertToCarriage(string carriageName, T data);
 
     private:
-        Conductor<T> *conductor;
         Carriage<T> *first;
         Carriage<T> *caboose;
         string name;

@@ -9,7 +9,8 @@ Carriage<T>::Carriage() {
 template <typename T>
 Carriage<T>::Carriage(unsigned int size, string name) {
     this->size = size;
-    data = new T[size];
+    data = new T[this->size];
+    this->name = name;
     next = nullptr;
     prev = nullptr;
 }
@@ -77,7 +78,7 @@ template <typename T>
 string Carriage<T>::getManifest() {
     string manifest = "\n--- " + name + " ---\n";
     for (int i = 0; i < inCarriage; i++) {
-        manifest += i + " : " data[i] + " ";
+        manifest += to_string(data[i]) + "\n";
     }
     return manifest;
 }
