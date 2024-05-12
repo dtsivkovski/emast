@@ -14,5 +14,9 @@ int main(int argc, char** argv) {
 
     w->printXZ();
 
+    w->removeVertex(0,3,5);
+
+    w->printXZ();
+
     delete w;
 }
